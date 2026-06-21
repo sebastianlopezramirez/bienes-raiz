@@ -5,13 +5,13 @@
     /* Define la variable para el color de fondo general de la aplicación */
     --bg-principal: rgba(255, 255, 255, 0.85); /* Fondo gris slate ultra claro y descansado */
     /* Define la variable para el fondo de componentes contenedores con opacidad traslúcida */
-    --tarjeta-bg: rgba(255, 255, 255, 0.85); /* Blanco con transparencia para efecto cristal */
+    --tarjeta-bg: #1e293b; /* Blanco con transparencia para efecto cristal */
     /* Define la variable para los bordes delgados de la interfaz, separando secciones limpiamente */
     --borde-suave: #e2e8f0; /* Gris sutil para separar componentes sin saturar */
     /* Define la variable de color para títulos y textos principales asegurando un contraste óptimo */
-    --texto-oscuro: #0f172a; /* Azul noche profundo para máxima legibilidad */
+    --texto-oscuro: #ffffff; /* Azul noche profundo para máxima legibilidad */
     /* Define la variable de color secundaria para descripciones secundarias y metadatos */
-    --texto-mutado: #64748b; /* Gris elegante para descripciones secundarias */
+    --texto-mutado: #cbd5e1; /* Gris elegante para descripciones secundarias */
     /* Define la variable de color corporativo de éxito comercial, llamado a la acción y precios */
     --verde-premium: #059669; /* Verde esmeralda para conversiones y dinero */
     /* Define la variable para el radio de curvatura de las esquinas en bloques comerciales */
@@ -97,9 +97,9 @@ form.card {
 /* Modifica únicamente esta sección en tu estilo.css para que la nueva imagen no se deforme */
 .icono-whatsapp-nav {
     width: auto; /* Deja que el ancho se adapte proporcionalmente al texto 'contáctanos' */
-    height: 42px; /* Una altura ideal para que no rompa el grosor de tu barra de navegación */
+    height: 60px; /* Una altura ideal para que no rompa el grosor de tu barra de navegación */
     object-fit: contain; /* Evita por completo que la imagen se estire o pierda proporciones */
-    border-radius: 4px; /* Remueve el círculo drástico y deja solo esquinas sutilmente suavizadas */
+    border-radius: 60px; /* Remueve el círculo drástico y deja solo esquinas sutilmente suavizadas */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Una sombra más ligera para fondos oscuros */
     transition: all 0.3s ease;
 }
@@ -387,4 +387,176 @@ data.precio-destacado {
 .tarjeta-categoria-home:hover .imagen-categoria-portada {
     /* Genera una magnificación limpia ampliando la escala de la imagen un 6% */
     transform: scale(1.06);
+}
+
+/*============================================================
+    FOOTER
+==============================================================*/
+
+
+/* ==========================================================================
+   FOOTER PREMIUM 2026 — Alquiler & Montaña
+   ========================================================================== */
+
+.footer-principal {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 60%, #0f2a1e 100%);
+    border-top: 3px solid #059669;
+    padding: 48px 0 24px;
+    margin-top: 60px;
+}
+
+.footer-contenedor {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 48px;
+}
+
+/* --- SECCIÓN 1: LOGO --- */
+.footer-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    flex: 1;
+}
+
+.footer-logo-img {
+    width: 90px;
+    height: 90px;
+    object-fit: contain;
+    border-radius: 50%;
+    border: 2px solid #059669;
+    padding: 6px;
+    background: rgba(5, 150, 105, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+    .footer-logo-img:hover {
+        transform: scale(1.06);
+        box-shadow: 0 0 20px rgba(5, 150, 105, 0.4);
+    }
+
+.footer-tagline {
+    color: #94a3b8;
+    font-size: 0.78rem;
+    text-align: center;
+    line-height: 1.5;
+    margin: 0;
+    letter-spacing: 0.3px;
+}
+
+/* --- SECCIÓN 2: INFORMACIÓN --- */
+.footer-info {
+    flex: 1.4;
+}
+
+.footer-titulo {
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(5, 150, 105, 0.35);
+    letter-spacing: 0.5px;
+}
+
+.footer-lista {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+    .footer-lista li {
+        color: #94a3b8;
+        font-size: 0.875rem;
+        line-height: 1.5;
+    }
+
+.footer-link {
+    color: #6ee7b7;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+    .footer-link:hover {
+        color: #059669;
+        text-decoration: underline;
+    }
+
+/* --- SECCIÓN 3: REDES SOCIALES --- */
+.footer-redes {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+}
+
+.footer-iconos {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 20px;
+    margin-top: 4px;
+}
+
+.footer-red {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    text-decoration: none;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    color: #ffffff;
+}
+
+    .footer-red.instagram {
+        background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+    }
+
+    .footer-red.facebook {
+        background: #1877f2;
+    }
+
+    .footer-red.tiktok {
+        background: #010101;
+        border: 1px solid #333;
+    }
+
+    .footer-red:hover {
+        transform: translateY(-4px) scale(1.08);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.35);
+    }
+
+.footer-copy {
+    color: #475569;
+    font-size: 0.75rem;
+    margin: 0;
+    margin-top: 8px;
+}
+
+/* --- RESPONSIVE MOBILE --- */
+@media (max-width: 768px) {
+    .footer-contenedor {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 32px;
+    }
+
+    .footer-redes {
+        align-items: center;
+    }
+
+    .footer-lista li {
+        text-align: center;
+    }
 }
