@@ -1,0 +1,390 @@
+/* ==========================================================================
+   VARIABLES GLOBALES Y CONFIGURACIÓN PREMIUM (Estilo 2026 Moderno)
+   ========================================================================== */
+:root {
+    /* Define la variable para el color de fondo general de la aplicación */
+    --bg-principal: rgba(255, 255, 255, 0.85); /* Fondo gris slate ultra claro y descansado */
+    /* Define la variable para el fondo de componentes contenedores con opacidad traslúcida */
+    --tarjeta-bg: rgba(255, 255, 255, 0.85); /* Blanco con transparencia para efecto cristal */
+    /* Define la variable para los bordes delgados de la interfaz, separando secciones limpiamente */
+    --borde-suave: #e2e8f0; /* Gris sutil para separar componentes sin saturar */
+    /* Define la variable de color para títulos y textos principales asegurando un contraste óptimo */
+    --texto-oscuro: #0f172a; /* Azul noche profundo para máxima legibilidad */
+    /* Define la variable de color secundaria para descripciones secundarias y metadatos */
+    --texto-mutado: #64748b; /* Gris elegante para descripciones secundarias */
+    /* Define la variable de color corporativo de éxito comercial, llamado a la acción y precios */
+    --verde-premium: #059669; /* Verde esmeralda para conversiones y dinero */
+    /* Define la variable para el radio de curvatura de las esquinas en bloques comerciales */
+    --radio-tarjeta: 16px; /* Curvatura de bordes moderna y amigable */
+}
+
+/* Configuración del cuerpo del sitio con transiciones suaves */
+body {
+    /* Asigna el fondo general del sitio web consumiendo la variable global */
+    background-color: var(--bg-principal);
+    /* Asigna el color tipográfico base para todo el texto consumiendo la variable global */
+    color: var(--texto-oscuro);
+    /* Define la pila de fuentes del sistema dando máxima prioridad a tipografías nativas y limpias */
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    /* Establece una transición global de 0.3 segundos para cualquier cambio de estado del cuerpo */
+    transition: all 0.3s ease;
+}
+
+/* ==========================================================================
+   ESTRUCTURAS SEMÁNTICAS MIGRACIÓN DIV-LESS
+   ========================================================================== */
+/* ==========================================================================
+   ESTRUCTURA DEL ENCABEZADO (BARRA DE NAVEGACIÓN SUPERIOR)
+   ========================================================================== */
+
+/* header: Barra superior minimalista y elegante */
+header nav.navbar {
+    /* Aplica un fondo gris carbón corporativo sobreescribiendo estilos por defecto */
+    background-color: #1e293b !important;
+    /* Añade una línea sutil en el borde inferior con 10% de opacidad para separar el menú del contenido */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    /* Crea un efecto esmerilado translúcido difuminando los elementos que pasen por detrás */
+    backdrop-filter: blur(8px);
+}
+
+/* ==========================================================================
+   CONTENEDOR PRINCIPAL Y ANIMACIONES DE ENTRADA
+   ========================================================================== */
+
+/* main: Espaciado dinámico optimizado para dispositivos móviles y escritorio */
+main.container {
+    /* Ejecuta una animación de transición suave al cargar la sección para mejorar la experiencia de usuario */
+    animation: fadeIn 0.6s ease-out;
+}
+
+/* ==========================================================================
+   FORMULARIO DE BÚSQUEDA Y PANELES DE FILTRADO
+   ========================================================================== */
+
+/* form: El panel de filtrado adaptado a un contenedor tipo flotante */
+form.card {
+    /* Asigna el fondo usando la variable predefinida de transparencia tipo cristal */
+    background: var(--tarjeta-bg) !important;
+    /* Aplica un borde delgado de color gris muy suave usando variables */
+    border: 1px solid var(--borde-suave) !important;
+    /* Redondea las esquinas del formulario de forma moderna usando variables */
+    border-radius: var(--radio-tarjeta) !important;
+    /* Genera un desenfoque de fondo interno para el efecto de tarjeta flotante premium */
+    backdrop-filter: blur(12px);
+    /* Superpone dos capas de sombras difuminadas para dar una sensación de profundidad realista en 3D */
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05) !important;
+}
+
+/* ==========================================================================
+   BOTÓN DE CONTACTO DIRECTO DE WHATSAPP
+   ========================================================================== */
+
+/* BOTON WHATSAPP*/
+.btn-whatsapp-nav {
+    /* Activa la caja flexible alineando el enlace en línea con los demás elementos */
+    display: inline-flex;
+    /* Alinea el contenido interno del botón (el icono) hacia el borde inferior vertical */
+    align-items: flex-end;
+    /* Centra el icono horizontalmente dentro de su espacio asignado */
+    justify-content: center;
+    /* Configura una transición de tamaño premium (curva Bézier) para que la animación no se sienta tosca */
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    /* Remueve la línea de subrayado que traen los enlaces web por defecto */
+    text-decoration: none;
+}
+
+/* Propiedades del archivo de imagen interno del botón de WhatsApp */
+/* Modifica únicamente esta sección en tu estilo.css para que la nueva imagen no se deforme */
+.icono-whatsapp-nav {
+    width: auto; /* Deja que el ancho se adapte proporcionalmente al texto 'contáctanos' */
+    height: 42px; /* Una altura ideal para que no rompa el grosor de tu barra de navegación */
+    object-fit: contain; /* Evita por completo que la imagen se estire o pierda proporciones */
+    border-radius: 4px; /* Remueve el círculo drástico y deja solo esquinas sutilmente suavizadas */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Una sombra más ligera para fondos oscuros */
+    transition: all 0.3s ease;
+}
+
+/* Micro-interacción: Efecto visual cuando el usuario pasa el mouse (Hover) sobre el botón */
+.btn-whatsapp-nav:hover {
+    /* Incrementa el tamaño total del botón un 15% (Efecto de pulsación o salto) */
+    transform: scale(1.15);
+}
+
+    /* Modifica el comportamiento de la imagen únicamente al pasar el mouse sobre su enlace contenedor */
+    .btn-whatsapp-nav:hover .icono-whatsapp-nav {
+        /* Incrementa el brillo un 10% para dar retroalimentación visual de que es clicable */
+        filter: brightness(1.1);
+    }
+
+}
+
+/* ==========================================================================
+   TARJETAS COMERCIALES (MÁXIMA CONVERSIÓN GOOGLE ADS)
+   ========================================================================== */
+
+/* section: Contenedor físico de la tarjeta de catálogo */
+section.tarjeta-lote {
+    /* Establece un contorno perimetral sólido consumiendo la variable de color gris */
+    border: 1px solid var(--borde-suave);
+    /* Redondea los bordes externos consumiendo los 16px configurados globalmente */
+    border-radius: var(--radio-tarjeta);
+    /* Define un fondo blanco puro para aislar el contenido de la tarjeta */
+    background: #ffffff;
+    /* Configura una animación doble amortiguada para los cambios mecánicos y sombreados */
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    /* Activa el diseño Flexbox para administrar los bloques secundarios internamente */
+    display: flex;
+    /* Ordena los elementos hijos de forma vertical de arriba hacia abajo */
+    flex-direction: column;
+}
+
+    /* Efecto de levitación interactiva al pasar el mouse (Hover) */
+    section.tarjeta-lote:hover {
+        /* Eleva sutilmente la tarjeta 8 píxeles en el eje vertical simulando flotabilidad */
+        transform: translateY(-8px);
+        /* Inyecta dos capas avanzadas de sombra suave dando realismo de altura tridimensional */
+        box-shadow: 0 20px 25px -5px rgba(15, 23, 42, 0.08), 0 10px 10px -5px rgba(15, 23, 42, 0.04);
+        /* Oscurece el borde a un gris intermedio para acentuar el enfoque del elemento */
+        border-color: #cbd5e1;
+    }
+
+/* figure: Manejo responsivo y de recorte inteligente de las fotografías */
+figure.position-relative {
+    /* Fuerza al contenedor multimedia a ocupar la totalidad de la anchura de su columna */
+    width: 100%;
+    /* Fija una altura rígida uniforme de 220 píxeles para estandarizar el catálogo */
+    height: 220px;
+    /* Oculta y recorta cualquier fracción de la imagen que sobrepase las medidas fijadas */
+    overflow: hidden;
+    /* Rellena provisionalmente el fondo con un gris neutro mientras descarga el archivo */
+    background-color: #f1f5f9;
+}
+
+/* Animación de zoom lento sobre la imagen del activo al pasar el mouse */
+figure img.card-img-top {
+    /* Expande el ancho de la imagen para cubrir el contenedor */
+    width: 100%;
+    /* Expande el alto de la imagen para cubrir el contenedor */
+    height: 100%;
+    /* Recorta la imagen al centro perfectamente sin deformarla */
+    object-fit: cover;
+    /* Aplica un temporizador de 0.6 segundos con aceleración premium para los cambios de tamaño */
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Evento gatillado que afecta a la imagen cuando el usuario reposa el cursor sobre la tarjeta general */
+section.tarjeta-lote:hover figure img.card-img-top {
+    /* Aplica un micro-zoom incrementando el tamaño de la foto un 6% de forma elegante */
+    transform: scale(1.06);
+}
+
+/* ==========================================================================
+   ETIQUETAS, BOTONES Y FORMATEO DE MONEDA
+   ========================================================================== */
+
+/* mark: Etiqueta semántica de categoría de producto */
+mark.badge {
+    /* Define una fuente compacta y legible de tamaño reducido */
+    font-size: 0.75rem;
+    /* Añade separación horizontal entre letras para un acabado estilizado */
+    letter-spacing: 0.05em;
+    /* Fuerza al texto de la insignia a transformarse completamente a letras mayúsculas */
+    text-transform: uppercase;
+    /* Genera margen interno vertical y horizontal para aislar el texto */
+    padding: 6px 12px;
+    /* Curva ligeramente los vértices de la insignia */
+    border-radius: 6px;
+}
+
+/* data: Tratamiento semántico para destacar el precio de manera corporativa */
+data.precio-destacado {
+    /* Aplica un tamaño de fuente destacado y legible para la visualización monetaria */
+    font-size: 1.4rem;
+    /* Inyecta el color verde esmeralda consumiendo la variable global preestablecida */
+    color: var(--verde-premium);
+    /* Reduce infinitesimalmente la distancia de caracteres para un look de imprenta */
+    letter-spacing: -0.02em;
+}
+
+    /* Agrega el signo de pesos de manera automatizada usando pseudo-elementos CSS */
+    data.precio-destacado::before {
+        /* Introduce el carácter del símbolo de dinero en la estructura visual anterior al valor */
+        content: "$";
+        /* Escala el signo de pesos a una dimensión menor para no sobrecargar el número */
+        font-size: 1.1rem;
+        /* Establece un espacio de separación horizontal entre el signo y el primer dígito */
+        margin-right: 2px;
+        /* Aplica un grosor de fuente intermedio al símbolo */
+        font-weight: 500;
+    }
+
+    /* Agrega el texto complementario MAV o formato de moneda */
+    data.precio-destacado::after {
+        /* Acopla la especificación de divisa al final del número */
+        content: " COP";
+        /* Disminuye drásticamente el tamaño del sufijo de divisa para balancear el diseño */
+        font-size: 0.8rem;
+        /* Asigna un matiz grisáceo usando una variable (nota: posee un leve error tipográfico en 'mutated') */
+        color: var(--texto-mutated);
+        /* Fija un grosor de tipografía regular y delgado para el sufijo */
+        font-weight: 400;
+    }
+
+/* Botones con micro-interacciones móviles */
+.btn-success {
+    /* Sobreescribe forzosamente el fondo de Bootstrap aplicando el verde esmeralda premium */
+    background-color: var(--verde-premium) !important;
+    /* Modifica el contorno del botón igualándolo al tono del fondo */
+    border-color: var(--verde-premium) !important;
+    /* Modifica el redondeo clásico a una curva de 10 píxeles más suavizada */
+    border-radius: 10px !important;
+    /* Declara una animación rápida de 0.2 segundos para cambios físicos */
+    transition: all 0.2s ease;
+}
+
+    /* Modificación en cascada ante el evento interactivo sobre el botón de éxito */
+    .btn-success:hover {
+        /* Incrementa la profundidad del verde a un tono pino corporativo al pasar el mouse */
+        background-color: #047857 !important;
+        /* Escala imperceptiblemente un 2% el tamaño general del botón simulando relieve activo */
+        transform: scale(1.02);
+    }
+
+/* ==========================================================================
+   ANIMACIONES DE ENTRADA (MÁXIMO CONFORT VISUAL)
+   ========================================================================== */
+@keyframes fadeIn {
+    /* Define las propiedades físicas de partida al arrancar la línea de tiempo */
+    from {
+        /* Declara la transparencia absoluta (invisible) */
+        opacity: 0;
+        /* Posiciona el contenedor 12 píxeles más abajo de su ubicación real */
+        transform: translateY(12px);
+    }
+    /* Define el estado físico de llegada al culminar la línea de tiempo */
+    to {
+        /* Restaura la opacidad total al 100% (completamente visible) */
+        opacity: 1;
+        /* Regresa el elemento a su coordenada vertical nativa (0) */
+        transform: translateY(0);
+    }
+}
+
+
+/* ==================================================
+   css para el logo en el header 
+===================================================*/
+
+/* Selector de clase para la imagen del logo (.logo-marca) */
+.logo-marca {
+    /* Define un ancho fijo de 70 píxeles para el logotipo */
+    width: 70px;
+    /* Define un alto fijo de 70 píxeles, manteniendo la imagen cuadrada */
+    height: 70px;
+    /* Fuerza a la imagen a escalarse proporcionalmente sin deformarse ni estirarse */
+    object-fit: contain;
+    /* Aplica un margen de 12 píxeles a la derecha para separarse del texto */
+    margin-right: 12px;
+    /* Configura una animación suave de 0.3 segundos para cualquier cambio de tamaño */
+    transition: transform 0.3s ease;
+    /* Recorta los extremos en un 30% dándole una curvatura suave al marco del logo */
+    border-radius: 30%;
+}
+
+/* Selector de clase para el texto del título (.titulo-marca) */
+.titulo-marca {
+    /* Define el tamaño de la letra usando unidades relativas rem (aprox. 21 píxeles) */
+    font-size: 1.35rem;
+    /* Junta sutilmente las letras para darle un look tipográfico moderno y premium */
+    letter-spacing: -0.02em;
+    /* Aplica el color blanco puro al texto para que resalte sobre el fondo oscuro */
+    color: #ffffff;
+}
+
+/* Selector avanzado: Aplica el estilo al logo (.logo-marca) SÓLO cuando pasas el mouse (:hover) sobre el enlace de la marca */
+.navbar-brand:hover .logo-marca {
+    /* Agranda el logo un 10% (scale) y lo gira 5 grados a la izquierda (rotate) */
+    transform: scale(1.1) rotate(-5deg);
+}
+
+/* Estilo específico para destacar la palabra ¡VENTA! en dorado */
+.texto-dorado {
+    /* Color amarillo dorado extraído directamente del auto del logo */
+    color: #f5b01d;
+    /* Asegura que se mantenga en mayúsculas impactantes */
+    text-transform: uppercase;
+    /* Deja un pequeño espacio elegante antes del resto del título */
+    margin-right: 6px;
+    /* Añade profundidad para que resalte sobre el fondo oscuro */
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Regla de CSS condicional: Aplica los estilos internos sólo si la pantalla mide 576 píxeles de ancho o menos (Móviles) */
+@media (max-width: 576px) {
+    /* Reduce el tamaño del logo en pantallas de celulares */
+    .logo-marca {
+        /* Baja el ancho a 35 píxeles para optimizar el espacio móvil */
+        width: 35px;
+        /* Baja el alto a 35 píxeles manteniendo la consistencia cuadrada */
+        height: 35px;
+        /* Reduce el margen derecho a 8 píxeles para que el texto no se amontone */
+        margin-right: 8px;
+    }
+    /* Adapta el tamaño del texto en pantallas de celulares */
+    .titulo-marca {
+        /* Achica la tipografía a 1.15rem para evitar que el título se rompa en dos líneas */
+        font-size: 1.15rem;
+    }
+}
+
+/* ==========================================================================
+   NUEVOS ESTILOS PARA LAS CATEGORÍAS GIGANTES CON IMAGEN DE FONDO
+   ========================================================================== */
+
+/* Contenedor principal de la tarjeta con animación de levitación */
+.tarjeta-categoria-home {
+    /* Asigna una doble animación de suavizado Bézier para el movimiento e inyección de sombras */
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    /* Aplica el sistema de bloques flexibles flexible de CSS */
+    display: flex;
+    /* Direcciona sus elementos subordinados de arriba hacia abajo verticalmente */
+    flex-direction: column;
+}
+
+    /* Efecto al pasar el cursor sobre la tarjeta */
+    .tarjeta-categoria-home:hover {
+        /* Provoca un desplazamiento vertical negativo ascendente de 8 píxeles */
+        transform: translateY(-8px);
+        /* Sobreescribe forzosamente la sombra expandiéndola para asimilar despegue volumétrico */
+        box-shadow: 0 20px 25px -5px rgba(15, 23, 42, 0.08) !important;
+    }
+
+/* Caja de la foto: Fija la altura grande y recorta los desbordes */
+.position-relative-container {
+    /* Extiende la anchura del bloque multimedia al 100% de la columna que lo hospeda */
+    width: 100%;
+    /* Altura ideal premium para la página de inicio */
+    height: 240px;
+    /* Garantiza la contención aislando y suprimiendo fragmentos sobrantes de las fotos */
+    overflow: hidden;
+    /* Añade una capa base gris mate mientras efectúa la carga de red */
+    background-color: #f1f5f9;
+}
+
+/* Propiedades de la imagen para que no se deforme */
+.imagen-categoria-portada {
+    /* Dilata la imagen al ancho absoluto del bloque contenedor */
+    width: 100%;
+    /* Dilata la imagen al alto absoluto del bloque contenedor */
+    height: 100%;
+    /* Centra la imagen y la adapta al espacio de forma fluida */
+    object-fit: cover;
+    /* Dota a la foto de una animación de transformación controlada de 0.6 segundos */
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Efecto de zoom elegante en la foto al pasar el mouse */
+.tarjeta-categoria-home:hover .imagen-categoria-portada {
+    /* Genera una magnificación limpia ampliando la escala de la imagen un 6% */
+    transform: scale(1.06);
+}

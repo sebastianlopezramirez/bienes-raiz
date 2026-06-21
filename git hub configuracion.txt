@@ -1,0 +1,90 @@
+configuracion guthub
+
+1 creacion de github----------------------------
+abrir cmd 
+escribir git --version 
+
+sino sale nada - instalar
+
+se crea la ventana o entorno MINGW64 muhco mejor que powershell o cmd
+
+para configurar mi identidad
+
+nombre
+git config --global user.name "sebas"
+
+correo
+git config --global user.email "selora1988@gmail.com"
+
+2 crear el repositorio en github -----------------------
+
+al crear el repositorio 
+nombre , descripcion , add reaadme y siguiente
+
+copiar el url del repositorio
+https://github.com/sebastianlopezramirez/influencia-comercial-web.git
+
+
+3 para trabajar directaemtne desde el proyecto que tengo en el disco extraible -----------------------
+power shell
+cd D:\proyectos\escuela-influencia
+
+iniciar git ahi
+git init
+
+conectar conel repositorio en git
+git remote add origin https://github.com/sebastianlopezramirez/influencia-comercial-web.git
+
+agrregar todos los archivos
+git add .
+
+el error era por que visual studio estaba abierto y tenia el archivo funcionando.(
+Ese error es normal y fácil de solucionar. La carpeta .vs es generada por Visual Studio automáticamente y no debe subirse a GitHub — ni siquiera necesitamos esos archivos.
+Vamos a crear un archivo .gitignore que le dice a Git qué ignorar:
+Paso 1 — Crear el archivo .gitignore:
+echo .vs/ > .gitignore
+Paso 2 — Ahora sí agregar todo:
+git add .
+Paso 3 — Commit:
+git commit -m "primer commit: proyecto escuela influencia"
+Paso 4 — Subir a GitHub:
+git push -u origin main)
+
+git add .
+
+hacer el push y commit
+git commit -m "primer commit: proyecto escuela influencia"
+git push -u origin main
+
+se debe desplgar todo el proyecto
+
+Después de esto tu proyecto queda 100% profesional y listo. El flujo de trabajo de ahora en adelante es siempre el mismo:
+
+
+PARA SIEMPRE SE DEBE HACER ESTO
+Haces cambios en VS Code ojo siempre que haga cambios debo hacer esto para actualizar todo en el github ----------------------------------
+
+git add .
+git commit -m "descripción del cambio"
+git push
+
+
+Perfecto, buen trabajo hoy. Para cerrar correctamente el proyecto ejecuta estos comandos en PowerShell:
+cd D:\proyectos\escuela-influencia
+git add .
+git commit -m "mejora: hero principal above the fold con etiquetas semanticas y boton palpitante"
+git push
+
+Eso guarda todo lo que hicimos hoy en GitHub. Cuando vuelvas a trabajar solo necesitas abrir VS Code y continuar — Git ya sabe dónde está todo.
+
+
+
+
+PARA USAR DE NUEVO EL PORYECTO -----------------------------------------
+¡Hola Sebastián! Bienvenido de nuevo. El ritual de inicio es siempre el mismo — 3 pasos antes de tocar cualquier archivo:
+Paso 1 — Abre PowerShell y ve a tu proyecto:
+cd D:\proyectos\escuela-influencia
+Paso 2 — Descarga los cambios más recientes de GitHub (por si algo cambió):
+git pull origin main
+Paso 3 — Verifica el estado actual:
+git status

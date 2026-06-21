@@ -1,0 +1,198 @@
+/* ==========================================================================
+   VARIABLES GLOBALES Y CONFIGURACIÓN PREMIUM (Estilo 2026 Moderno)
+   ========================================================================== */
+:root {
+    --bg-principal: #f8fafc; /* Fondo gris slate ultra claro y descansado */
+    --tarjeta-bg: rgba(255, 255, 255, 0.85); /* Blanco con transparencia para efecto cristal */
+    --borde-suave: #e2e8f0; /* Gris sutil para separar componentes sin saturar */
+    --texto-oscuro: #0f172a; /* Azul noche profundo para máxima legibilidad */
+    --texto-mutado: #64748b; /* Gris elegante para descripciones secundarias */
+    --verde-premium: #059669; /* Verde esmeralda para conversiones y dinero */
+    --radio-tarjeta: 16px; /* Curvatura de bordes moderna y amigable */
+}
+
+/* Configuración del cuerpo del sitio con transiciones suaves */
+body {
+    background-color: var(--bg-principal);
+    color: var(--texto-oscuro);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    transition: all 0.3s ease;
+}
+
+/* ==========================================================================
+   ESTRUCTURAS SEMÁNTICAS MIGRACIÓN DIV-LESS
+   ========================================================================== */
+
+/* header: Barra superior minimalista y elegante */
+header nav.navbar {
+    background-color: #1e293b !important; /* Gris carbón corporativo */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px); /* Desenfoque de fondo premium */
+}
+
+/* main: Espaciado dinámico optimizado para dispositivos móviles y escritorio */
+main.container {
+    animation: fadeIn 0.6s ease-out; /* Animación de entrada suave para el usuario */
+}
+
+/* form: El panel de filtrado adaptado a un contenedor tipo flotante */
+form.card {
+    background: var(--tarjeta-bg) !important;
+    border: 1px solid var(--borde-suave) !important;
+    border-radius: var(--radio-tarjeta) !important;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05) !important;
+}
+
+/* ==========================================================================
+   TARJETAS COMERCIALES (MÁXIMA CONVERSIÓN GOOGLE ADS)
+   ========================================================================== */
+
+/* section: Contenedor físico de la tarjeta de catálogo */
+section.tarjeta-lote {
+    border: 1px solid var(--borde-suave);
+    border-radius: var(--radio-tarjeta);
+    background: #ffffff;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex;
+    flex-direction: column;
+}
+
+    /* Efecto de levitación interactiva al pasar el mouse (Hover) */
+    section.tarjeta-lote:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 25px -5px rgba(15, 23, 42, 0.08), 0 10px 10px -5px rgba(15, 23, 42, 0.04);
+        border-color: #cbd5e1;
+    }
+
+/* figure: Manejo responsivo y de recorte inteligente de las fotografías */
+figure.position-relative {
+    width: 100%;
+    height: 220px;
+    overflow: hidden;
+    background-color: #f1f5f9;
+}
+
+/* Animación de zoom lento sobre la imagen del activo al pasar el mouse */
+figure img.card-img-top {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Recorta la imagen al centro perfectamente sin deformarla */
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+section.tarjeta-lote:hover figure img.card-img-top {
+    transform: scale(1.06);
+}
+
+/* ==========================================================================
+   ETIQUETAS, BOTONES Y FORMATEO DE MONEDA
+   ========================================================================== */
+
+/* mark: Etiqueta semántica de categoría de producto */
+mark.badge {
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 6px 12px;
+    border-radius: 6px;
+}
+
+/* data: Tratamiento semántico para destacar el precio de manera corporativa */
+data.precio-destacado {
+    font-size: 1.4rem;
+    color: var(--verde-premium);
+    letter-spacing: -0.02em;
+}
+
+    /* Agrega el signo de pesos de manera automatizada usando pseudo-elementos CSS */
+    data.precio-destacado::before {
+        content: "$";
+        font-size: 1.1rem;
+        margin-right: 2px;
+        font-weight: 500;
+    }
+
+    /* Agrega el texto complementario MAV o formato de moneda */
+    data.precio-destacado::after {
+        content: " COP";
+        font-size: 0.8rem;
+        color: var(--texto-mutated);
+        font-weight: 400;
+    }
+
+/* Botones con micro-interacciones móviles */
+.btn-success {
+    background-color: var(--verde-premium) !important;
+    border-color: var(--verde-premium) !important;
+    border-radius: 10px !important;
+    transition: all 0.2s ease;
+}
+
+    .btn-success:hover {
+        background-color: #047857 !important;
+        transform: scale(1.02);
+    }
+
+/* ==========================================================================
+   ANIMACIONES DE ENTRADA (MÁXIMO CONFORT VISUAL)
+   ========================================================================== */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* ==================================================
+    css para el logo en el header 
+===================================================*/
+
+/* Selector de clase para la imagen del logo (.logo-marca) */
+.logo-marca {
+    width: 60px; /* Define un ancho fijo de 40 píxeles para el logotipo */
+    height: 60px; /* Define un alto fijo de 40 píxeles, manteniendo la imagen cuadrada */
+    object-fit: contain; /* Fuerza a la imagen a escalarse proporcionalmente sin deformarse ni estirarse */
+    margin-right: 12px; /* Aplica un margen de 12 píxeles a la derecha para separarse del texto */
+    transition: transform 0.3s ease; /* Configura una animación suave de 0.3 segundos para cualquier cambio de tamaño */
+}
+
+/* Selector de clase para el texto del título (.titulo-marca) */
+.titulo-marca {
+    font-size: 1.35rem; /* Define el tamaño de la letra usando unidades relativas rem (aprox. 21 píxeles) */
+    letter-spacing: -0.02em; /* Junta sutilmente las letras para darle un look tipográfico moderno y premium */
+    color: #ffffff; /* Aplica el color blanco puro al texto para que resalte sobre el fondo oscuro */
+}
+
+/* Selector avanzado: Aplica el estilo al logo (.logo-marca) SÓLO cuando pasas el mouse (:hover) sobre el enlace de la marca */
+.navbar-brand:hover .logo-marca {
+    transform: scale(1.1) rotate(-5deg); /* Agranda el logo un 10% (scale) y lo gira 5 grados a la izquierda (rotate) */
+}
+
+/* Estilo específico para destacar la palabra ¡VENTA! en dorado */
+.texto-dorado {
+    color: #f5b01d; /* Color amarillo dorado extraído directamente del auto del logo */
+    text-transform: uppercase; /* Asegura que se mantenga en mayúsculas impactantes */
+    margin-right: 6px; /* Deja un pequeño espacio elegante antes del resto del título */
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Añade profundidad para que resalte sobre el fondo oscuro */
+}
+
+/* Regla de CSS condicional: Aplica los estilos internos sólo si la pantalla mide 576 píxeles de ancho o menos (Móviles) */
+@media (max-width: 576px) {
+    /* Reduce el tamaño del logo en pantallas de celulares */
+    .logo-marca {
+        width: 32px; /* Baja el ancho a 32 píxeles para optimizar el espacio móvil */
+        height: 32px; /* Baja el alto a 32 píxeles manteniendo la consistencia cuadrada */
+        margin-right: 8px; /* Reduce el margen derecho a 8 píxeles para que el texto no se amontone */
+    }
+    /* Adapta el tamaño del texto en pantallas de celulares */
+    .titulo-marca {
+        font-size: 1.15rem; /* Achica la tipografía a 1.15rem para evitar que el título se rompa en dos líneas */
+    }
+}

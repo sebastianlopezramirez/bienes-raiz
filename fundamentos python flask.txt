@@ -1,0 +1,51 @@
+fundamentos del curso para aprender a manejar flask python
+1. Explicación del Código (Línea por Línea)
+from flask import Flask: Aquí estás importando una clase llamada Flask. En Python, una clase es una plantilla para crear objetos. Estás trayendo las herramientas necesarias para que tu script sepa cómo ser un servidor web.
+
+app = Flask(__name__): Creas una instancia (un objeto individual) de esa clase. __name__ es una variable especial de Python que le dice a Flask dónde buscar archivos (como tus carpetas de imágenes).
+
+@app.route('/'): Esto se llama un decorador. Su función es conectar una dirección de internet (URL) con una función de Python. El '/' significa la página principal (la raíz).
+
+def inicio():: Es una función estándar de Python. Flask la ejecutará automáticamente cuando alguien visite la raíz de tu sitio.
+
+return "<h1>...</h1>": Es lo que la función le devuelve al navegador. El navegador recibe este texto en formato HTML y lo dibuja en la pantalla.
+
+if __name__ == '__main__':: Esta línea verifica si estás ejecutando el archivo directamente. Si es así, activa el servidor con app.run(debug=True). El debug=True es vital: hace que el servidor se reinicie solo cada vez que guardas un cambio.
+
+2. ¿Qué fundamentos estudiar en el libro?
+Para dominar este proyecto de bienes raíces, te sugiero enfocarte en estos capítulos y conceptos del "Curso Intensivo de Python":
+
+A. Fundamentos de Lógica (Primeros Capítulos)
+Variables y tipos de datos (Capítulo 2): Para manejar los nombres de los lotes y sus precios.
+
+Listas y diccionarios (Capítulos 3, 4 y 6): CRÍTICO. Cuando tengas 20 lotes, los guardarás en una lista de diccionarios. Debes saber cómo recorrerlos con bucles for.
+
+B. Estructura de Programación
+Funciones (Capítulo 8): Todo en Flask son funciones. Debes entender cómo pasarles información (parámetros) y cómo obtener resultados (return).
+
+Clases (Capítulo 9): Flask es Programación Orientada a Objetos. Entender qué es una clase y un método te ayudará a no ver el código como "magia".
+
+C. El Proyecto Web (Capítulo 18 en adelante)
+El libro tiene una sección dedicada a Django, que es el "hermano mayor" de Flask. Aunque usas Flask, los conceptos que explica el libro sobre la web son idénticos:
+
+Rutas y URLs: Cómo conectar lo que el usuario escribe en el navegador con tu código.
+
+Plantillas (Templates): Cómo separar el HTML del código Python (lo que me pediste al principio).
+
+BOOSTRAP
+responisve incluido en los diseños de cajas y espacios actualizados
+
+CSS
+¿Por qué hicimos esto? (Fundamentos)
+Cascading Style Sheets (CSS): Se llama "Cascada" porque los estilos se aplican de arriba hacia abajo. Lo que pongas al final puede sobrescribir lo de arriba.
+
+Variables (:root): Esto es de arquitecto profesional. Si mañana decides que tu verde ya no es bosque sino esmeralda, solo cambias una línea de código arriba y toda la página se actualiza sola.
+
+Pseudoclases (:hover): Es lo que le da "vida" a la web. Google Ads valora mucho la Experiencia de Usuario (UX). Si la página reacciona cuando el usuario interactúa, se quedan más tiempo, y Google te posiciona mejor.
+
+Paso 3: Conexión con tu HTML
+Para que esto funcione, asegúrate de que en tu index.html (el que hicimos en el paso anterior) esté esta línea dentro del <head>:
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/estilo.css') }}">
+
+Ese código entre llaves {{ ... }} es Jinja2 (el lenguaje de plantillas de Python). Le dice a Flask: "Oye, busca en la carpeta 'static' el archivo que está en 'css/estilo.css' y conéctalo".

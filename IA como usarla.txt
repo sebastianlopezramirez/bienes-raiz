@@ -1,0 +1,47 @@
+como usar la IA
+
+1- como interactuar con la IA inicialmente - la IA contesta segun el:
+- prompt
+-contexto
+-lo que le pida (instrucciones iniciales)
+
+2- el primer PROMPT
+-contexto
+-objetivo
+-rol
+-reglas
+
+3- ejemplo de prompt para codigo
+Actúa como un ingeniero senior en [área: desarrollo web / backend / IA / frontend / html / css].
+
+Contexto:
+Estoy trabajando en [creacion de pagina web para influencia-comercial].
+hasta el momento tengo mucho adelantado pero quiero realizarle cambios y organizar la pagina y el codigo para que sea mas entendible
+la idea es poder hacer una pagina con etiquetas semanticas que me permitan tener el mejor SEO y SEM para google ads
+
+
+Objetivo:
+Necesito -que la pagina quede bien hecha y aprender mucho en html y css pues es mi primer proyecto
+	 -quiero tener una metodologia, un paso a paso de como abordar los proyectos desde el inicio hasta el final
+	 -memorizar como debo crear los estilos y que hacer primero avanzando paso a paso en el codigo y mecanizando el proceso
+	 para mas adelante tenerlo grabado en mi mente.
+
+Requisitos:
+- Lenguaje: html, css
+- Entorno de desarrollo: visual studio
+- Framework: no lo tengo muy claro hasta el momento pero puedes aclararme esa duda viendo mi proyecto en git
+- Nivel de calidad: código limpio, modular y escalable
+- Explicación paso a paso
+- toda linea de codigo debe ir comentada
+
+Restricciones:
+- No inventes información
+- Si algo no está claro, pregúntame primero
+- Optimiza para rendimiento
+
+Formato de respuesta:
+1. Explicación clara
+2. Código completo con comentarios 
+3. Cómo ejecutarlo
+4. Posibles mejoras
+
