@@ -116,8 +116,6 @@ form.card {
         filter: brightness(1.1);
     }
 
-}
-
 /* ==========================================================================
    TARJETAS COMERCIALES (MÁXIMA CONVERSIÓN GOOGLE ADS)
    ========================================================================== */
@@ -319,21 +317,77 @@ data.precio-destacado {
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-/* Regla de CSS condicional: Aplica los estilos internos sólo si la pantalla mide 576 píxeles de ancho o menos (Móviles) */
+/* ===========================================================================
+   RESPONSIVE — Móviles (≤ 576px)
+   Estas reglas solo se aplican cuando la pantalla es del tamaño de un celular.
+   =========================================================================== */
 @media (max-width: 576px) {
-    /* Reduce el tamaño del logo en pantallas de celulares */
+
+    /* --- LOGO: reducir tamaño para que quepa en la barra de navegación --- */
     .logo-marca {
-        /* Baja el ancho a 35 píxeles para optimizar el espacio móvil */
-        width: 35px;
-        /* Baja el alto a 35 píxeles manteniendo la consistencia cuadrada */
-        height: 35px;
-        /* Reduce el margen derecho a 8 píxeles para que el texto no se amontone */
-        margin-right: 8px;
+        width: 36px;
+        height: 36px;
+        margin-right: 6px;
     }
-    /* Adapta el tamaño del texto en pantallas de celulares */
+
+    /* --- TÍTULO NAVBAR: texto más pequeño y sin desbordamiento --- */
     .titulo-marca {
-        /* Achica la tipografía a 1.15rem para evitar que el título se rompa en dos líneas */
+        font-size: 0.92rem;
+        /* Impide que el texto se rompa en varias líneas ocupando toda la pantalla */
+        white-space: nowrap;
+        /* Si el texto es demasiado largo, lo corta con "..." en vez de desbordarse */
+        overflow: hidden;
+        text-overflow: ellipsis;
+        /* Limita el ancho máximo para que deje espacio al botón y al WhatsApp */
+        max-width: 150px;
+    }
+
+    /* --- ICONO WHATSAPP: más pequeño en móvil (era 60px, ahora 38px) --- */
+    .icono-whatsapp-nav {
+        height: 38px;
+    }
+
+    /* --- BOTÓN MODO OSCURO: menos padding en pantalla pequeña --- */
+    #btn-tema {
+        padding: 4px 8px;
+        font-size: 1rem;
+        margin-left: 4px;
+    }
+
+    /* --- PRECIO: fuente más compacta en tarjetas pequeñas --- */
+    data.precio-destacado {
         font-size: 1.15rem;
+    }
+
+    /* --- IMAGEN CARRUSEL DE TARJETAS: altura menor en móvil --- */
+    /* El estilo inline height:200px ya es razonable, pero reducimos un poco más */
+    .carousel-item img.foto-clickeable {
+        height: 180px !important;
+    }
+
+    /* --- TARJETAS DEL HOME: altura de la foto más compacta en móvil --- */
+    .position-relative-container {
+        height: 180px;
+    }
+
+    /* --- LIGHTBOX: modal ocupa toda la pantalla en móvil --- */
+    .modal-xl {
+        max-width: 100%;
+        margin: 0;
+    }
+
+    .modal-content {
+        border-radius: 0 !important;
+    }
+
+    /* --- FILTROS: formulario con padding reducido --- */
+    form.card {
+        padding: 12px !important;
+    }
+
+    /* --- TÍTULO DE SECCIÓN: texto más pequeño en móvil --- */
+    h1.h3 {
+        font-size: 1.1rem;
     }
 }
 
@@ -637,6 +691,15 @@ data.precio-destacado {
 [data-bs-theme="dark"] .position-relative-container,
 [data-bs-theme="dark"] figure.position-relative {
     background-color: #0f172a !important;
+}
+
+/* Todas las tarjetas del mismo alto — el contenido interno se estira con flexbox */
+.row > article {
+    display: flex;
+}
+
+section.tarjeta-lote {
+    width: 100%;
 }
 
 /* Botón toggle modo oscuro */

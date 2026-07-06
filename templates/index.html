@@ -26,21 +26,23 @@
                     </span>
                 </a>
 
-                {# Botón para alternar entre modo claro y oscuro #}
-                <button id="btn-tema" title="Cambiar tema" onclick="toggleTema()">🌙</button>
+                <div class="ms-auto d-flex align-items-center gap-2">
+                    {# Botón modo oscuro — al lado del WhatsApp #}
+                    <button id="btn-tema" title="Cambiar tema" onclick="toggleTema()">🌙</button>
 
-                <a href="https://wa.me/573137921336" class="btn-whatsapp-nav ms-auto" target="_blank" title="Contactarnos por WhatsApp">
-                    <img src="{{ url_for('static', filename='img/whatsapp.webp') }}"
-                         alt="WhatsApp Contacto"
-                         class="icono-whatsapp-nav"
-                         onerror="this.src='https://via.placeholder.com/35x35?text=💬'">
-                </a>
+                    <a href="https://wa.me/573137921336" class="btn-whatsapp-nav" target="_blank" title="Contactarnos por WhatsApp">
+                        <img src="{{ url_for('static', filename='img/whatsapp.webp') }}"
+                             alt="WhatsApp Contacto"
+                             class="icono-whatsapp-nav"
+                             onerror="this.src='https://via.placeholder.com/35x35?text=💬'">
+                    </a>
+                </div>
 
             </section>
         </nav>
     </header>
 
-    <main class="container mt-5">
+    <main class="container mt-3 mt-md-5">
 
         {% if not filtro_actual %}
         <section class="text-center py-5">
@@ -49,7 +51,7 @@
 
             <section class="row justify-content-center g-4">
 
-                <article class="col-md-4 mb-4">
+                <article class="col-12 col-sm-6 col-md-4 mb-4">
                     <a href="/?filtro=Lote" class="text-decoration-none text-dark">
                         <section class="tarjeta-categoria-home h-100 border rounded shadow-sm bg-white overflow-hidden">
                             <figure class="m-0 position-relative-container">
@@ -66,7 +68,7 @@
                     </a>
                 </article>
 
-                <article class="col-md-4 mb-4">
+                <article class="col-12 col-sm-6 col-md-4 mb-4">
                     <a href="/?filtro=Casa" class="text-decoration-none text-dark">
                         <section class="tarjeta-categoria-home h-100 border rounded shadow-sm bg-white overflow-hidden">
                             <figure class="m-0 position-relative-container">
@@ -83,7 +85,7 @@
                     </a>
                 </article>
 
-                <article class="col-md-4 mb-4">
+                <article class="col-12 col-sm-6 col-md-4 mb-4">
                     <a href="/?filtro=Carro" class="text-decoration-none text-dark">
                         <section class="tarjeta-categoria-home h-100 border rounded shadow-sm bg-white overflow-hidden">
                             <figure class="m-0 position-relative-container">
@@ -111,7 +113,7 @@
             <a href="/" class="btn btn-dark fw-bold rounded-pill shadow-sm">← 🏠 Volver al Menú Principal</a>
         </nav>
 
-        <section class="mb-4 d-flex justify-content-between align-items-center bg-white p-3 rounded shadow-sm border">
+        <section class="mb-4 d-flex flex-wrap justify-content-between align-items-center gap-2 bg-white p-3 rounded shadow-sm border">
             <header>
                 <h1 class="h3 fw-bold mb-0 text-dark">Catálogo Exclusivo: {{ filtro_actual }}s</h1>
                 <p class="small text-muted mb-0">Usa los filtros de abajo para refinar tu búsqueda</p>
@@ -188,7 +190,7 @@
         <section class="row">
             {% if propiedades %}
             {% for propiedad in propiedades %}
-            <article class="col-md-4 mb-4">
+            <article class="col-12 col-sm-6 col-md-4 mb-4">
                 <section class="tarjeta-lote h-100 bg-white rounded shadow-sm overflow-hidden">
 
                     {# CARRUSEL de imágenes — muestra todas las fotos de la propiedad #}
@@ -241,18 +243,33 @@
                         </div>
                     </figure>
 
-                    <section class="p-3">
+                    <section class="p-3 d-flex flex-column flex-grow-1">
                         <mark class="badge bg-dark mb-2">{{ propiedad['categoria'] }}</mark>
                         <h3 class="h5 fw-bold text-dark">{{ propiedad['titulo'] }}</h3>
-                        <p class="text-muted small mb-2">📍 {{ propiedad['ubicacion'] }}</p>
-                        <p class="text-secondary small mb-3">{{ propiedad['descripcion'] }}</p>
+                        <p class="text-muted small mb-2">📍 {{ propiedad['municipio'] }} — {{ propiedad['ubicacion'] }}</p>
 
-                        <data class="precio-destacado fw-bold d-block mt-2" value="{{ propiedad['precio'] }}">{{ propiedad['precio'] | formato_precio }}</data>
-                        <hr>
+                        {# DESCRIPCIÓN DESPLEGABLE — Bootstrap Collapse #}
+                        <div class="mb-3">
+                            <button class="btn btn-sm btn-outline-secondary w-100 text-start"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#desc-{{ propiedad['id'] }}"
+                                    aria-expanded="false">
+                                📋 Ver descripción ▾
+                            </button>
+                            <div class="collapse mt-2" id="desc-{{ propiedad['id'] }}">
+                                <p class="text-secondary small mb-0 p-2 border rounded">{{ propiedad['descripcion'] }}</p>
+                            </div>
+                        </div>
 
-                        <a href="https://wa.me/573000000000" class="btn btn-outline-dark btn-sm w-100 fw-bold" target="_blank">
-                            Consultar Disponibilidad
-                        </a>
+                        {# Precio siempre visible y empujado al fondo de la tarjeta #}
+                        <div class="mt-auto">
+                            <data class="precio-destacado fw-bold d-block" value="{{ propiedad['precio'] }}">{{ propiedad['precio'] | formato_precio }}</data>
+                            <hr>
+                            <a href="https://wa.me/573137921336" class="btn btn-success btn-sm w-100 fw-bold" target="_blank">
+                                💬 Consultar Disponibilidad
+                            </a>
+                        </div>
                     </section>
                 </section>
             </article>
