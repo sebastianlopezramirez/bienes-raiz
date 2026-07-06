@@ -231,6 +231,37 @@ def admin():
     return render_template('admin.html')
 
 
+# ==============================================================================
+# RUTA: /propiedad/<id> (Página individual de una propiedad)
+# Permite compartir un link directo a una propiedad específica por WhatsApp.
+# Ejemplo: http://localhost:5000/propiedad/5
+# ==============================================================================
+@app.route('/propiedad/<int:id>')
+def ver_propiedad(id):
+    conn = sqlite3.connect(DB_PATH)
+    conn.row_factory = sqlite3.Row
+    cursor = conn.cursor()
+
+    # Buscamos la propiedad por su ID único.
+    cursor.execute("SELECT * FROM propiedades WHERE id = ?", (id,))
+    fila = cursor.fetchone()
+    conn.close()
+
+    # Si no existe, redirigimos al inicio para no mostrar página en blanco.
+    if not fila:
+        return redirect('/')
+
+    # Convertimos la fila a diccionario y parseamos las imágenes igual que en inicio().
+    p = dict(fila)
+    try:
+        imagenes = json.loads(p['imagen_url'])
+        p['imagenes'] = imagenes if isinstance(imagenes, list) else [p['imagen_url']]
+    except:
+        p['imagenes'] = [p['imagen_url']]
+
+    return render_template('propiedad.html', propiedad=p)
+
+
 # Bloque estándar de arranque en modo desarrollo.
 if __name__ == '__main__':
     app.run(debug=True)

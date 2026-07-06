@@ -266,9 +266,14 @@
                         <div class="mt-auto">
                             <data class="precio-destacado fw-bold d-block" value="{{ propiedad['precio'] }}">{{ propiedad['precio'] | formato_precio }}</data>
                             <hr>
-                            <a href="https://wa.me/573137921336" class="btn btn-success btn-sm w-100 fw-bold" target="_blank">
+                            <a href="https://wa.me/573137921336" class="btn btn-success btn-sm w-100 fw-bold mb-2" target="_blank">
                                 💬 Consultar Disponibilidad
                             </a>
+                            {# Botón compartir: abre WhatsApp con un mensaje ya escrito y el link a la página individual #}
+                            <button onclick="compartir({{ propiedad['id'] }}, '{{ propiedad['titulo'] | replace("'", "\\'") }}', '{{ propiedad['precio'] | formato_precio }}')"
+                                    class="btn btn-outline-secondary btn-sm w-100 fw-bold">
+                                📤 Compartir
+                            </button>
                         </div>
                     </section>
                 </section>
@@ -386,6 +391,19 @@
             </div>
         </div>
     </div>
+
+    <script>
+    // ── FUNCIÓN COMPARTIR POR WHATSAPP ──
+    // Se llama desde el botón de cada tarjeta.
+    // window.location.origin devuelve el dominio base: ej. "https://tusitio.com"
+    // Con él construimos el link directo a la página de esa propiedad.
+    function compartir(id, titulo, precio) {
+        var link    = window.location.origin + '/propiedad/' + id;
+        var mensaje = '🏡 ' + titulo + '\n💰 ' + precio + '\n\n¡Mira esta propiedad aquí!\n' + link;
+        var url     = 'https://wa.me/?text=' + encodeURIComponent(mensaje);
+        window.open(url, '_blank');
+    }
+    </script>
 
     <script>
     // Cuando el usuario hace clic en una foto del carrusel de tarjetas,
