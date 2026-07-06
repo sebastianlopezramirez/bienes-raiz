@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stack del Proyecto — Vitrina Propiedades & Vehículos</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #0f172a;
+      color: #e2e8f0;
+      min-height: 100vh;
+      padding: 40px 20px;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #f8fafc;
+      margin-bottom: 6px;
+    }
+
+    .subtitle {
+      text-align: center;
+      font-size: 0.9rem;
+      color: #94a3b8;
+      margin-bottom: 50px;
+    }
+
+    /* ── ARQUITECTURA (diagrama de flujo) ── */
+    .arquitectura {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+      margin-bottom: 60px;
+    }
+
+    .capa {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      width: 100%;
+      max-width: 700px;
+    }
+
+    .capa-box {
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 12px;
+      padding: 18px 28px;
+      text-align: center;
+      flex: 1;
+      position: relative;
+    }
+
+    .capa-box .etiqueta {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .capa-box .nombre {
+      font-size: 1.15rem;
+      font-weight: 700;
+    }
+
+    .capa-box .detalle {
+      font-size: 0.78rem;
+      color: #94a3b8;
+      margin-top: 4px;
+    }
+
+    /* colores por capa */
+    .capa-browser  { border-color: #3b82f6; }
+    .capa-browser .etiqueta { color: #3b82f6; }
+    .capa-browser .nombre   { color: #93c5fd; }
+
+    .capa-frontend { border-color: #8b5cf6; }
+    .capa-frontend .etiqueta { color: #8b5cf6; }
+    .capa-frontend .nombre   { color: #c4b5fd; }
+
+    .capa-backend  { border-color: #10b981; }
+    .capa-backend .etiqueta { color: #10b981; }
+    .capa-backend .nombre   { color: #6ee7b7; }
+
+    .capa-db       { border-color: #f59e0b; }
+    .capa-db .etiqueta { color: #f59e0b; }
+    .capa-db .nombre   { color: #fcd34d; }
+
+    .capa-deploy   { border-color: #ef4444; }
+    .capa-deploy .etiqueta { color: #ef4444; }
+    .capa-deploy .nombre   { color: #fca5a5; }
+
+    /* flecha entre capas */
+    .flecha {
+      text-align: center;
+      font-size: 1.4rem;
+      color: #475569;
+      line-height: 1;
+      padding: 6px 0;
+    }
+
+    /* ── TABLA DE TECNOLOGÍAS ── */
+    .titulo-seccion {
+      text-align: center;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #64748b;
+      margin-bottom: 20px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+      max-width: 960px;
+      margin: 0 auto 60px;
+    }
+
+    .card {
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 12px;
+      padding: 20px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .card-icon {
+      font-size: 2rem;
+      flex-shrink: 0;
+      width: 48px;
+      text-align: center;
+    }
+
+    .card-body h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #f1f5f9;
+      margin-bottom: 2px;
+    }
+
+    .card-body .role {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .card-body p {
+      font-size: 0.8rem;
+      color: #94a3b8;
+      line-height: 1.5;
+    }
+
+    .card-body code {
+      background: #0f172a;
+      border: 1px solid #334155;
+      border-radius: 4px;
+      padding: 1px 6px;
+      font-size: 0.75rem;
+      color: #e2e8f0;
+    }
+
+    /* badge de capa */
+    .badge {
+      display: inline-block;
+      border-radius: 999px;
+      padding: 2px 10px;
+      font-size: 0.68rem;
+      font-weight: 600;
+    }
+    .b-frontend { background: #2e1065; color: #c4b5fd; }
+    .b-backend  { background: #064e3b; color: #6ee7b7; }
+    .b-db       { background: #451a03; color: #fcd34d; }
+    .b-deploy   { background: #450a0a; color: #fca5a5; }
+    .b-tool     { background: #0c1445; color: #93c5fd; }
+
+    /* ── ARCHIVO MAP ── */
+    .filemap {
+      max-width: 600px;
+      margin: 0 auto 60px;
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 12px;
+      padding: 24px 28px;
+    }
+
+    .filemap h2 {
+      font-size: 0.85rem;
+      color: #64748b;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 16px;
+    }
+
+    .tree-line {
+      font-size: 0.82rem;
+      color: #94a3b8;
+      line-height: 1.9;
+      font-family: 'Cascadia Code', 'Consolas', monospace;
+    }
+
+    .tree-line .hl-green  { color: #6ee7b7; }
+    .tree-line .hl-purple { color: #c4b5fd; }
+    .tree-line .hl-yellow { color: #fcd34d; }
+    .tree-line .hl-blue   { color: #93c5fd; }
+    .tree-line .hl-red    { color: #fca5a5; }
+
+    /* ── METODOLOGÍA ── */
+    .metodologia {
+      max-width: 700px;
+      margin: 0 auto 40px;
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 12px;
+      padding: 24px 28px;
+    }
+
+    .metodologia h2 {
+      font-size: 0.85rem;
+      color: #64748b;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 16px;
+    }
+
+    .paso {
+      display: flex;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+
+    .paso-num {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: #0f172a;
+      border: 1px solid #475569;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #94a3b8;
+      flex-shrink: 0;
+    }
+
+    .paso p {
+      font-size: 0.85rem;
+      color: #cbd5e1;
+      line-height: 1.6;
+    }
+
+    .paso strong { color: #f1f5f9; }
+  </style>
+</head>
+<body>
+
+  <h1>📐 Stack Técnico del Proyecto</h1>
+  <p class="subtitle">Vitrina Propiedades &amp; Vehículos — Análisis completo de arquitectura</p>
+
+  <!-- DIAGRAMA DE CAPAS -->
+  <div class="arquitectura">
+
+    <div class="capa">
+      <div class="capa-box capa-browser">
+        <div class="etiqueta">Capa 1 — Usuario</div>
+        <div class="nombre">Navegador Web</div>
+        <div class="detalle">Chrome, Safari, Firefox — hace peticiones HTTP</div>
+      </div>
+    </div>
+
+    <div class="flecha">↕</div>
+
+    <div class="capa">
+      <div class="capa-box capa-frontend">
+        <div class="etiqueta">Capa 2 — Frontend</div>
+        <div class="nombre">HTML5 + Jinja2 + Bootstrap 5</div>
+        <div class="detalle">templates/index.html &nbsp;|&nbsp; templates/admin.html</div>
+      </div>
+    </div>
+
+    <div class="flecha">↕</div>
+
+    <div class="capa">
+      <div class="capa-box capa-backend">
+        <div class="etiqueta">Capa 3 — Backend</div>
+        <div class="nombre">Python + Flask</div>
+        <div class="detalle">app.py — Rutas: / &nbsp;|&nbsp; /admin</div>
+      </div>
+    </div>
+
+    <div class="flecha">↕</div>
+
+    <div class="capa">
+      <div class="capa-box capa-db">
+        <div class="etiqueta">Capa 4 — Base de Datos</div>
+        <div class="nombre">SQLite</div>
+        <div class="detalle">bienes_raiz.db &nbsp;|&nbsp; Tabla: propiedades</div>
+      </div>
+    </div>
+
+    <div class="flecha">↕</div>
+
+    <div class="capa">
+      <div class="capa-box capa-deploy">
+        <div class="etiqueta">Capa 5 — Despliegue</div>
+        <div class="nombre">Gunicorn + Render</div>
+        <div class="detalle">render.yaml — servidor de producción en la nube</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- GRID DE TECNOLOGÍAS -->
+  <p class="titulo-seccion">Tecnologías en detalle</p>
+  <div class="grid">
+
+    <div class="card">
+      <div class="card-icon">🐍</div>
+      <div class="card-body">
+        <h3>Python</h3>
+        <span class="badge b-backend">Backend</span>
+        <p>El lenguaje principal. Todo el procesamiento de datos, las consultas a la base de datos y la lógica de negocio está escrita en Python.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">⚗️</div>
+      <div class="card-body">
+        <h3>Flask</h3>
+        <span class="badge b-backend">Backend — Framework Web</span>
+        <p>Micro-framework que convierte Python en un servidor web. Define las rutas <code>/</code> y <code>/admin</code> y conecta todo.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🗄️</div>
+      <div class="card-body">
+        <h3>SQLite</h3>
+        <span class="badge b-db">Base de Datos</span>
+        <p>Base de datos relacional en un solo archivo <code>bienes_raiz.db</code>. Guarda lotes, casas y carros en la tabla <code>propiedades</code>.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🧩</div>
+      <div class="card-body">
+        <h3>Jinja2</h3>
+        <span class="badge b-frontend">Frontend — Templates</span>
+        <p>Motor de plantillas de Flask. Permite usar variables de Python dentro del HTML con la sintaxis <code>{{ variable }}</code> y <code>{% if %}</code>.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🎨</div>
+      <div class="card-body">
+        <h3>Bootstrap 5.3</h3>
+        <span class="badge b-frontend">Frontend — CSS Framework</span>
+        <p>Librería de estilos. Se usa para la barra de navegación, la cuadrícula de tarjetas y los botones. Cargado desde CDN.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">✏️</div>
+      <div class="card-body">
+        <h3>CSS Personalizado</h3>
+        <span class="badge b-frontend">Frontend — Estilos Propios</span>
+        <p>Archivo <code>static/css/estilo.css</code> con los estilos únicos del sitio: colores dorados, tarjetas de categoría, botón de WhatsApp.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🦄</div>
+      <div class="card-body">
+        <h3>Gunicorn</h3>
+        <span class="badge b-deploy">Despliegue — Servidor WSGI</span>
+        <p>Servidor de producción que reemplaza al servidor de desarrollo de Flask. Es obligatorio en Render para manejar múltiples usuarios.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">☁️</div>
+      <div class="card-body">
+        <h3>Render</h3>
+        <span class="badge b-deploy">Despliegue — Plataforma Cloud</span>
+        <p>Hosting gratuito donde corre el sitio en producción. Configurado con el archivo <code>render.yaml</code>.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🐙</div>
+      <div class="card-body">
+        <h3>Git + GitHub</h3>
+        <span class="badge b-tool">Herramienta — Control de Versiones</span>
+        <p>Guarda el historial de cambios del código. Render se conecta a GitHub para hacer deploy automático.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🖼️</div>
+      <div class="card-body">
+        <h3>Imágenes WebP</h3>
+        <span class="badge b-frontend">Frontend — Assets</span>
+        <p>Formato moderno de imagen más ligero que JPG/PNG. Guardadas en <code>static/img/</code> para cargas más rápidas.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- MAPA DE ARCHIVOS -->
+  <div class="filemap">
+    <h2>📁 Mapa de archivos del proyecto</h2>
+    <div class="tree-line">
+      <span class="hl-blue">bienes raiz/</span><br>
+      ├── <span class="hl-green">app.py</span>              ← El motor: rutas, lógica, SQL<br>
+      ├── <span class="hl-yellow">bienes_raiz.db</span>     ← La base de datos SQLite<br>
+      ├── <span class="hl-green">crear_db.py</span>         ← Script para inicializar datos<br>
+      ├── <span class="hl-red">requirements.txt</span>    ← flask + gunicorn<br>
+      ├── <span class="hl-red">render.yaml</span>          ← Configuración de deploy<br>
+      ├── templates/<br>
+      │   ├── <span class="hl-purple">index.html</span>      ← Página principal + filtros<br>
+      │   └── <span class="hl-purple">admin.html</span>      ← Panel para agregar propiedades<br>
+      └── static/<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;├── css/<br>
+      │&nbsp;&nbsp;&nbsp;&nbsp;└── <span class="hl-purple">estilo.css</span>   ← Estilos personalizados<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;└── img/<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└── <span class="hl-blue">*.webp</span>          ← Fotos de propiedades
+    </div>
+  </div>
+
+  <!-- METODOLOGÍA -->
+  <div class="metodologia">
+    <h2>🧠 Lo que aprendemos de este stack — Metodología</h2>
+
+    <div class="paso">
+      <div class="paso-num">1</div>
+      <p><strong>ENTENDER:</strong> Este es un sitio web dinámico de 2 páginas: la vitrina pública (<code>/</code>) y el panel de administración (<code>/admin</code>). El usuario ve propiedades, las filtra, y el dueño las agrega desde el panel.</p>
+    </div>
+
+    <div class="paso">
+      <div class="paso-num">2</div>
+      <p><strong>PENSAR:</strong> El flujo es: navegador → Flask recibe la petición → consulta SQLite → Jinja2 inyecta los datos en el HTML → el usuario ve la página con Bootstrap bien estilada.</p>
+    </div>
+
+    <div class="paso">
+      <div class="paso-num">3</div>
+      <p><strong>ESCRIBIR:</strong> Cada pieza tiene un rol claro. Flask es el "cerebro", SQLite es la "memoria", Jinja2 es el "pintor" que mezcla datos con HTML, Bootstrap es el "sastre" que da el estilo.</p>
+    </div>
+
+    <div class="paso">
+      <div class="paso-num">4</div>
+      <p><strong>VERIFICAR:</strong> El stack es correcto para un MVP pequeño. La limitación es SQLite — en producción con muchos usuarios simultáneos, habría que migrar a PostgreSQL. Render ya lo soporta.</p>
+    </div>
+
+  </div>
+
+</body>
+</html>

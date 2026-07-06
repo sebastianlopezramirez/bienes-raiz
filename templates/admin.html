@@ -26,7 +26,7 @@
             <p class="text-muted">Rellena los campos de abajo de forma precisa. Los cambios se reflejarán de inmediato.</p>
         </section>
 
-        <form method="POST" action="/admin" class="card p-4 shadow border-0 bg-white">
+        <form method="POST" action="/admin" enctype="multipart/form-data" class="card p-4 shadow border-0 bg-white">
 
             <section class="mb-3">
                 <label for="titulo" class="form-label fw-bold text-secondary">Título del Anuncio / Producto</label>
@@ -43,14 +43,208 @@
                 </select>
             </section>
 
+            <!-- ── DEPARTAMENTO ── -->
             <section class="mb-3">
-                <label for="ubicacion" class="form-label fw-bold text-secondary">Ubicación Exacta</label>
-                <select id="ubicacion" name="ubicacion" class="form-select" required>
-                    <option value="" disabled selected>Selecciona la zona...</option>
-                    <option value="Santa Elena, Medellín">Santa Elena, Medellín</option>
-                    <option value="Guarne, Antioquia">Guarne, Antioquia</option>
-                    <option value="El Poblado, Medellín">El Poblado, Medellín</option>
+                <label for="departamento" class="form-label fw-bold text-secondary">Departamento</label>
+                <select id="departamento" name="departamento" class="form-select" required>
+                    <option value="Antioquia" selected>Antioquia</option>
+                    <option value="Cundinamarca">Cundinamarca</option>
+                    <option value="Valle del Cauca">Valle del Cauca</option>
+                    <option value="Bolívar">Bolívar</option>
+                    <option value="Atlántico">Atlántico</option>
+                    <option value="Santander">Santander</option>
+                    <option value="Córdoba">Córdoba</option>
+                    <option value="Risaralda">Risaralda</option>
+                    <option value="Caldas">Caldas</option>
+                    <option value="Quindío">Quindío</option>
+                    <option value="Nariño">Nariño</option>
+                    <option value="Tolima">Tolima</option>
+                    <option value="Huila">Huila</option>
+                    <option value="Cauca">Cauca</option>
+                    <option value="Meta">Meta</option>
+                    <option value="Boyacá">Boyacá</option>
+                    <option value="Cesar">Cesar</option>
+                    <option value="Magdalena">Magdalena</option>
+                    <option value="La Guajira">La Guajira</option>
+                    <option value="Norte de Santander">Norte de Santander</option>
+                    <option value="Chocó">Chocó</option>
+                    <option value="Sucre">Sucre</option>
+                    <option value="Caquetá">Caquetá</option>
+                    <option value="Putumayo">Putumayo</option>
+                    <option value="Casanare">Casanare</option>
+                    <option value="Arauca">Arauca</option>
+                    <option value="Vichada">Vichada</option>
+                    <option value="Guainía">Guainía</option>
+                    <option value="Vaupés">Vaupés</option>
+                    <option value="Guaviare">Guaviare</option>
+                    <option value="Amazonas">Amazonas</option>
+                    <option value="San Andrés y Providencia">San Andrés y Providencia</option>
                 </select>
+            </section>
+
+            <!-- ── MUNICIPIO (125 municipios de Antioquia organizados por subregión) ── -->
+            <section class="mb-3">
+                <label for="municipio" class="form-label fw-bold text-secondary">Municipio</label>
+                <select id="municipio" name="municipio" class="form-select" required>
+                    <option value="" disabled selected>Selecciona el municipio...</option>
+
+                    <optgroup label="── Valle de Aburrá ──">
+                        <option value="Barbosa">Barbosa</option>
+                        <option value="Bello">Bello</option>
+                        <option value="Caldas">Caldas</option>
+                        <option value="Copacabana">Copacabana</option>
+                        <option value="Envigado">Envigado</option>
+                        <option value="Girardota">Girardota</option>
+                        <option value="Itagüí">Itagüí</option>
+                        <option value="La Estrella">La Estrella</option>
+                        <option value="Medellín">Medellín</option>
+                        <option value="Sabaneta">Sabaneta</option>
+                    </optgroup>
+
+                    <optgroup label="── Oriente ──">
+                        <option value="Abejorral">Abejorral</option>
+                        <option value="Alejandría">Alejandría</option>
+                        <option value="Argelia">Argelia</option>
+                        <option value="El Carmen de Viboral">El Carmen de Viboral</option>
+                        <option value="Cocorná">Cocorná</option>
+                        <option value="Concepción">Concepción</option>
+                        <option value="El Peñol">El Peñol</option>
+                        <option value="El Retiro">El Retiro</option>
+                        <option value="Granada">Granada</option>
+                        <option value="Guarne">Guarne</option>
+                        <option value="Guatapé">Guatapé</option>
+                        <option value="La Ceja">La Ceja</option>
+                        <option value="La Unión">La Unión</option>
+                        <option value="Marinilla">Marinilla</option>
+                        <option value="Nariño">Nariño</option>
+                        <option value="Rionegro">Rionegro</option>
+                        <option value="San Carlos">San Carlos</option>
+                        <option value="San Francisco">San Francisco</option>
+                        <option value="San Luis">San Luis</option>
+                        <option value="San Rafael">San Rafael</option>
+                        <option value="San Vicente Ferrer">San Vicente Ferrer</option>
+                        <option value="Santuario">Santuario</option>
+                        <option value="Sonsón">Sonsón</option>
+                    </optgroup>
+
+                    <optgroup label="── Norte ──">
+                        <option value="Angostura">Angostura</option>
+                        <option value="Belmira">Belmira</option>
+                        <option value="Briceño">Briceño</option>
+                        <option value="Campamento">Campamento</option>
+                        <option value="Carolina del Príncipe">Carolina del Príncipe</option>
+                        <option value="Donmatías">Donmatías</option>
+                        <option value="Entrerríos">Entrerríos</option>
+                        <option value="Gómez Plata">Gómez Plata</option>
+                        <option value="Guadalupe">Guadalupe</option>
+                        <option value="Ituango">Ituango</option>
+                        <option value="Liborina">Liborina</option>
+                        <option value="Olaya">Olaya</option>
+                        <option value="Peque">Peque</option>
+                        <option value="Sabanalarga">Sabanalarga</option>
+                        <option value="San Andrés de Cuerquia">San Andrés de Cuerquia</option>
+                        <option value="San José de la Montaña">San José de la Montaña</option>
+                        <option value="San Pedro de los Milagros">San Pedro de los Milagros</option>
+                        <option value="Santa Rosa de Osos">Santa Rosa de Osos</option>
+                        <option value="Toledo">Toledo</option>
+                        <option value="Valdivia">Valdivia</option>
+                        <option value="Yarumal">Yarumal</option>
+                    </optgroup>
+
+                    <optgroup label="── Nordeste ──">
+                        <option value="Amalfi">Amalfi</option>
+                        <option value="Anorí">Anorí</option>
+                        <option value="Cisneros">Cisneros</option>
+                        <option value="Remedios">Remedios</option>
+                        <option value="San Roque">San Roque</option>
+                        <option value="Santo Domingo">Santo Domingo</option>
+                        <option value="Segovia">Segovia</option>
+                        <option value="Vegachí">Vegachí</option>
+                        <option value="Yalí">Yalí</option>
+                        <option value="Yolombó">Yolombó</option>
+                    </optgroup>
+
+                    <optgroup label="── Magdalena Medio ──">
+                        <option value="Caracolí">Caracolí</option>
+                        <option value="Maceo">Maceo</option>
+                        <option value="Puerto Berrío">Puerto Berrío</option>
+                        <option value="Puerto Nare">Puerto Nare</option>
+                        <option value="Puerto Triunfo">Puerto Triunfo</option>
+                        <option value="Yondó">Yondó</option>
+                    </optgroup>
+
+                    <optgroup label="── Occidente ──">
+                        <option value="Abriaquí">Abriaquí</option>
+                        <option value="Anzá">Anzá</option>
+                        <option value="Armenia">Armenia</option>
+                        <option value="Buriticá">Buriticá</option>
+                        <option value="Cañasgordas">Cañasgordas</option>
+                        <option value="Dabeiba">Dabeiba</option>
+                        <option value="Ebéjico">Ebéjico</option>
+                        <option value="Frontino">Frontino</option>
+                        <option value="Giraldo">Giraldo</option>
+                        <option value="Heliconia">Heliconia</option>
+                        <option value="Murindó">Murindó</option>
+                        <option value="San Jerónimo">San Jerónimo</option>
+                        <option value="Santa Fe de Antioquia">Santa Fe de Antioquia</option>
+                        <option value="Sopetrán">Sopetrán</option>
+                        <option value="Uramita">Uramita</option>
+                        <option value="Vigía del Fuerte">Vigía del Fuerte</option>
+                    </optgroup>
+
+                    <optgroup label="── Suroeste ──">
+                        <option value="Amagá">Amagá</option>
+                        <option value="Andes">Andes</option>
+                        <option value="Angelópolis">Angelópolis</option>
+                        <option value="Betania">Betania</option>
+                        <option value="Betulia">Betulia</option>
+                        <option value="Ciudad Bolívar">Ciudad Bolívar</option>
+                        <option value="Concordia">Concordia</option>
+                        <option value="Fredonia">Fredonia</option>
+                        <option value="Hispania">Hispania</option>
+                        <option value="Jardín">Jardín</option>
+                        <option value="Jericó">Jericó</option>
+                        <option value="La Pintada">La Pintada</option>
+                        <option value="Montebello">Montebello</option>
+                        <option value="Pueblorrico">Pueblorrico</option>
+                        <option value="Salgar">Salgar</option>
+                        <option value="Santa Bárbara">Santa Bárbara</option>
+                        <option value="Támesis">Támesis</option>
+                        <option value="Tarso">Tarso</option>
+                        <option value="Urrao">Urrao</option>
+                        <option value="Valparaíso">Valparaíso</option>
+                        <option value="Venecia">Venecia</option>
+                    </optgroup>
+
+                    <optgroup label="── Bajo Cauca ──">
+                        <option value="Cáceres">Cáceres</option>
+                        <option value="Caucasia">Caucasia</option>
+                        <option value="El Bagre">El Bagre</option>
+                        <option value="Nechí">Nechí</option>
+                        <option value="Tarazá">Tarazá</option>
+                        <option value="Zaragoza">Zaragoza</option>
+                    </optgroup>
+
+                    <optgroup label="── Urabá ──">
+                        <option value="Apartadó">Apartadó</option>
+                        <option value="Arboletes">Arboletes</option>
+                        <option value="Carepa">Carepa</option>
+                        <option value="Chigorodó">Chigorodó</option>
+                        <option value="Mutatá">Mutatá</option>
+                        <option value="Necoclí">Necoclí</option>
+                        <option value="San Juan de Urabá">San Juan de Urabá</option>
+                        <option value="San Pedro de Urabá">San Pedro de Urabá</option>
+                        <option value="Turbo">Turbo</option>
+                    </optgroup>
+
+                </select>
+            </section>
+
+            <!-- ── UBICACIÓN ESPECÍFICA (barrio, vereda, sector) ── -->
+            <section class="mb-3">
+                <label for="ubicacion" class="form-label fw-bold text-secondary">Barrio / Vereda / Sector</label>
+                <input type="text" id="ubicacion" name="ubicacion" class="form-control"
+                       placeholder="Ej: Santa Elena, El Poblado, Vereda La Honda..." required>
             </section>
 
             <section class="mb-3">
@@ -65,17 +259,26 @@
                     <option value="Toyota">Toyota</option>
                     <option value="Nissan">Nissan</option>
                     <option value="Ford">Ford</option>
+                    <option value="Chevrolet">Chevrolet</option>
+                    <option value="Mazda">Mazda</option>
+                    <option value="Renault">Renault</option>
+                    <option value="Kia">Kia</option>
+                    <option value="Hyundai">Hyundai</option>
+                    <option value="Mitsubishi">Mitsubishi</option>
+                    <option value="Jeep">Jeep</option>
                 </select>
             </section>
 
             <section class="mb-3">
-                <label for="imagen_url" class="form-label fw-bold text-secondary">Nombre del archivo de imagen (Opcional)</label>
-                <input type="text" id="imagen_url" name="imagen_url" class="form-control" placeholder="Ej: lote2.jpg / carro3.jpg (Debe estar en static/img/)">
+                <label for="imagen" class="form-label fw-bold text-secondary">Foto de la Propiedad (Opcional)</label>
+                <input type="file" id="imagen" name="imagenes" class="form-control" accept="image/*" multiple>
+                <small class="text-muted">Puedes seleccionar hasta 10 fotos a la vez. Se suben automáticamente a Cloudinary.</small>
             </section>
 
             <section class="mb-4">
                 <label for="descripcion" class="form-label fw-bold text-secondary">Descripción Detallada</label>
-                <textarea id="descripcion" name="descripcion" class="form-control" rows="4" placeholder="Escribe las características más atractivas para tus campañas de Google Ads..." required></textarea>
+                <textarea id="descripcion" name="descripcion" class="form-control" rows="4"
+                          placeholder="Escribe las características más atractivas..." required></textarea>
             </section>
 
             <button type="submit" class="btn btn-danger w-100 fw-bold py-2 shadow-sm">🚀 Registrar en la Base de Datos</button>
@@ -86,7 +289,7 @@
 
     <footer class="bg-light py-3 mt-5 border-top">
         <section class="container text-center text-muted">
-            <p class="small mb-0">&copy; 2026 Admin | Alquiler & Montaña - Panel Semántico Conectado de Alta Eficiencia.</p>
+            <p class="small mb-0">&copy; 2026 Admin | Alquiler & Montaña</p>
         </section>
     </footer>
 
