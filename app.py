@@ -7,7 +7,14 @@
 # - render_template: Para procesar y mostrar los archivos HTML (con Jinja2).
 # - request: Para capturar los filtros y datos que envía el usuario desde el navegador.
 # - redirect: Para redirigir el flujo de navegación hacia otras rutas si es necesario.
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, session
+
+# session: Guarda datos en el navegador del usuario de forma segura (cifrada).
+# Usamos session para recordar que el admin ya inició sesión.
+
+# functools.wraps: Herramienta para construir decoradores — permite que @login_required
+# no "rompa" el nombre de la función que está protegiendo.
+from functools import wraps
 
 # Importamos sqlite3 para interactuar con bases de datos SQL relacionales locales.
 # Importamos os para manipular rutas de archivos del sistema operativo de forma segura.
@@ -26,6 +33,30 @@ import cloudinary.uploader
 
 # Inicializamos nuestra aplicación web Flask.
 app = Flask(__name__)
+
+# SECRET_KEY: Clave que Flask usa para firmar y cifrar las cookies de sesión.
+# Sin esta clave, cualquiera podría falsificar una sesión de admin.
+# Se lee desde el .env para no estar escrita directamente en el código.
+app.secret_key = os.getenv('SECRET_KEY', 'clave-de-desarrollo-cambiar-en-produccion')
+
+
+# ==============================================================================
+# DECORADOR: @login_required
+# Un decorador es una función que "envuelve" a otra función para agregarle
+# comportamiento extra. Aquí, antes de ejecutar cualquier ruta protegida,
+# verificamos si el usuario ya inició sesión. Si no, lo mandamos al login.
+#
+# Uso: se escribe @login_required encima de cualquier ruta que quieras proteger.
+# ==============================================================================
+def login_required(f):
+    @wraps(f)   # Preserva el nombre y docstring de la función original
+    def decorador(*args, **kwargs):
+        # session.get('logged_in') devuelve True si el admin inició sesión,
+        # o None si no hay sesión activa.
+        if not session.get('logged_in'):
+            return redirect('/login')   # Redirige al formulario de login
+        return f(*args, **kwargs)       # Si sí hay sesión, ejecuta la ruta normalmente
+    return decorador
 
 # Obtiene la ruta absoluta de la carpeta donde está guardado este archivo "app.py".
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -177,9 +208,49 @@ def inicio():
 
 
 # ==============================================================================
+# RUTA: /login — Formulario de acceso al panel admin
+# ==============================================================================
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    error = None
+
+    if request.method == 'POST':
+        # Leemos lo que escribió el usuario en el formulario.
+        usuario    = request.form.get('usuario')
+        contrasena = request.form.get('contrasena')
+
+        # Comparamos con las credenciales guardadas en el .env
+        # os.getenv() lee la variable de entorno de forma segura.
+        if usuario == os.getenv('ADMIN_USER') and contrasena == os.getenv('ADMIN_PASS'):
+            # Credenciales correctas: marcamos la sesión como activa.
+            # session es un diccionario especial que Flask cifra y guarda en una cookie.
+            session['logged_in'] = True
+            return redirect('/admin')
+        else:
+            # Credenciales incorrectas: guardamos el error para mostrarlo en el HTML.
+            error = 'Usuario o contraseña incorrectos. Intenta de nuevo.'
+
+    # GET: mostramos el formulario vacío (o con el error si falló el intento).
+    return render_template('login.html', error=error)
+
+
+# ==============================================================================
+# RUTA: /logout — Cierra la sesión y redirige al inicio
+# ==============================================================================
+@app.route('/logout')
+def logout():
+    # session.clear() borra todos los datos de la sesión activa.
+    # El usuario pierde acceso al admin hasta que vuelva a hacer login.
+    session.clear()
+    return redirect('/')
+
+
+# ==============================================================================
 # RUTA: /admin (Panel de administración — agregar propiedades)
+# @login_required: si no hay sesión activa, redirige a /login automáticamente.
 # ==============================================================================
 @app.route('/admin', methods=['GET', 'POST'])
+@login_required   # ← Esta línea activa la protección
 def admin():
     if request.method == 'POST':
         # Capturamos cada campo del formulario HTML.

@@ -1,0 +1,205 @@
+{
+  "main": {
+    "id": "a70fe212686e97a6",
+    "type": "split",
+    "children": [
+      {
+        "id": "a7b6141bb6d51239",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "478e83dc98c132a9",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "20-mocs/proyecto-moc.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "proyecto-moc"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "5edcf06998049a7e",
+    "type": "split",
+    "children": [
+      {
+        "id": "2a0ba33eb4b7b804",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "6f43c8ad33285199",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Explorador de archivos"
+            }
+          },
+          {
+            "id": "2bad32cd4e11eff7",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Buscar"
+            }
+          },
+          {
+            "id": "4f5e1bba19c112cd",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Marcadores"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "62a249bb088f0b03",
+    "type": "split",
+    "children": [
+      {
+        "id": "cefed32d43eac54c",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "cd844f261e63f1ba",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "20-mocs/proyecto-moc.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Enlaces entrantes de proyecto-moc"
+            }
+          },
+          {
+            "id": "105565b93e14d88b",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "20-mocs/proyecto-moc.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Enlaces salientes de proyecto-moc"
+            }
+          },
+          {
+            "id": "d72744eb637918a2",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Etiquetas"
+            }
+          },
+          {
+            "id": "b1ed599ebf2b4ccb",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "Todas las propiedades"
+            }
+          },
+          {
+            "id": "fc735c8b201a3758",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "20-mocs/proyecto-moc.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Esquema de proyecto-moc"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Abrir selector rápido": false,
+      "graph:Abrir vista gráfica": false,
+      "canvas:Crear nuevo lienzo": false,
+      "daily-notes:Abrir la nota de hoy": false,
+      "templates:Insertar plantilla": false,
+      "command-palette:Abrir paleta de comandos": false,
+      "bases:Crear nueva base": false
+    }
+  },
+  "active": "6f43c8ad33285199",
+  "lastOpenFiles": [
+    "20-mocs/proyecto-moc.md.tmp.9648.f40e88ff310b",
+    "50-lecciones/lecciones-aprendidas.md",
+    "50-lecciones/lecciones-aprendidas.md.tmp.9648.b2ed42945df8",
+    "40-decisiones/ADR-003-sqlite-primero.md",
+    "40-decisiones/ADR-003-sqlite-primero.md.tmp.9648.e74a4b914f02",
+    "40-decisiones/ADR-002-cloudinary-para-imagenes.md",
+    "40-decisiones/ADR-002-cloudinary-para-imagenes.md.tmp.9648.43cedb3eff0e",
+    "40-decisiones/ADR-001-flask-sobre-django.md",
+    "40-decisiones/ADR-001-flask-sobre-django.md.tmp.9648.dd79e97b2fcd",
+    "10-notas/aprendizaje-javascript.md",
+    "10-notas/aprendizaje-javascript.md.tmp.9648.5841ebe139e5",
+    "10-notas/aprendizaje-flask.md",
+    "10-notas/aprendizaje-python.md",
+    "00-inbox/ideas-pendientes.md",
+    "50-lecciones",
+    "40-decisiones"
+  ]
+}
